@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="QuickBridger">
+    <output-path>$PROJECT_DIR$/server/plugins</output-path>
+    <root id="archive" name="QuickBridger.jar">
+      <element id="module-output" name="QuickBridger" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,31 @@
+#搭路用方块(物品id:物品特殊值:物品数量)
+BridgingBlock: "24:0:64"
+#结束点方块
+StopBlock: 152
+#重生点设置方块
+ResBlock: 133
+#加速方块
+SpeedupBlock: 41
+#返回出生点方块
+ReturnBlock: 22
+#电梯方块
+ElevatorBlock: 138
+#镐子
+Pickaxe: "278:0:1"
+#最低高度(低于将被拉回重生点)
+Lowy: 0.0
+#世界名称
+LevelName: "bpractise"
+#玩家出生点坐标
+SpawnPoint: "4.5,24.0,10.5"
+
+#命令名(例如：/qkbr join 就是加人搭路练习命令)
+CommandName: "qkbr"
+#加入搭路练习命令参数
+JoinCommand: "join"
+#退出搭路练习命令参数
+QuitCommand: "quit"
+
+#命令白名单
+CommandWhiteList:
+  - "hub"
