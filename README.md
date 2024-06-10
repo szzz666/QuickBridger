@@ -1,7 +1,7 @@
 # QuickBridger
-## 一款简单的搭路练习nukkit插件
+### 一款简单的搭路练习nukkit插件
 
-## 搭路练习插件配置指南
+### 搭路练习插件配置指南
 
 ### 搭路练习的玩家数量tips和rsnpc变量：{QbNumOfPlayers}
 
