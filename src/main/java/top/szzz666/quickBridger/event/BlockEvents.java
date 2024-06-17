@@ -55,6 +55,9 @@ public class BlockEvents implements Listener {
         if (player.getLevel().getName().equals(LevelName) && placedBlock.getId() != bridgingBlockId) {//玩家在世界名字为"world"
             //取消破坏方块事件
             event.setCancelled(true);
+        }else if (player.getLevel().getName().equals(LevelName) && placedBlock.getId() == bridgingBlockId) {//玩家在世界名字为"world"
+            //取消方块掉落
+            event.setDrops(new Item[0]);
         }
     }
 

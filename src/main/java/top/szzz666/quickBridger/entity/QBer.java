@@ -17,11 +17,12 @@ public class QBer {
     private boolean isStop = true;
     private boolean isReturn = true;
     private ArrayList<Item> qberInventory;
+    private int quitCount;
 
     public QBer() {
     }
 
-    public QBer(String qbername, Position qberSpawnPoint, ArrayList<Block> qberBlock, boolean isSetSpawnPoint, boolean isSpeedup, boolean isElevator, boolean isStop, boolean isReturn, ArrayList<Item> qberInventory) {
+    public QBer(String qbername, Position qberSpawnPoint, ArrayList<Block> qberBlock, boolean isSetSpawnPoint, boolean isSpeedup, boolean isElevator, boolean isStop, boolean isReturn, ArrayList<Item> qberInventory, int quitCount) {
         this.qbername = qbername;
         this.qberSpawnPoint = qberSpawnPoint;
         this.qberBlock = qberBlock;
@@ -31,6 +32,7 @@ public class QBer {
         this.isStop = isStop;
         this.isReturn = isReturn;
         this.qberInventory = qberInventory;
+        this.quitCount = quitCount;
     }
 
 
@@ -186,7 +188,23 @@ public class QBer {
         this.qberInventory = qberInventory;
     }
 
+    /**
+     * 获取
+     * @return quitCount
+     */
+    public int getQuitCount() {
+        return quitCount;
+    }
+
+    /**
+     * 设置
+     * @param quitCount
+     */
+    public void setQuitCount(int quitCount) {
+        this.quitCount = quitCount;
+    }
+
     public String toString() {
-        return "QBer{qbername = " + qbername + ", qberSpawnPoint = " + qberSpawnPoint + ", qberBlock = " + qberBlock + ", isSetSpawnPoint = " + isSetSpawnPoint + ", isSpeedup = " + isSpeedup + ", isElevator = " + isElevator + ", isStop = " + isStop + ", isReturn = " + isReturn + ", qberInventory = " + qberInventory + "}";
+        return "QBer{qbername = " + qbername + ", qberSpawnPoint = " + qberSpawnPoint + ", qberBlock = " + qberBlock + ", isSetSpawnPoint = " + isSetSpawnPoint + ", isSpeedup = " + isSpeedup + ", isElevator = " + isElevator + ", isStop = " + isStop + ", isReturn = " + isReturn + ", qberInventory = " + qberInventory + ", quitCount = " + quitCount + "}";
     }
 }

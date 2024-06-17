@@ -5,7 +5,6 @@ import cn.nukkit.Player;
 import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerTeleportEvent;
-import cn.nukkit.inventory.Inventory;
 import cn.nukkit.inventory.PlayerInventory;
 import cn.nukkit.item.Item;
 import cn.nukkit.level.Position;
@@ -39,6 +38,7 @@ public class PlayerTeleportEvents implements Listener {
         player.getInventory().clearAll();
         player.giveItem(getBridgingBlockItem());
         player.giveItem(getPickaxeItem());
+        player.getInventory().setItem(8, getQuitItem());
     }
 
     //将Inventory中的物品添加到Player的Inventory中
@@ -68,6 +68,7 @@ public class PlayerTeleportEvents implements Listener {
         qBer.setQberSpawnPoint(getSpawnPoint());
         AllQBer.put(player, qBer);
         resetInventory(player);
+        player.setGamemode(0);
         sandMsgToQber("§e玩家 " + player.getName() + " 加入了搭路练习");
     }
 

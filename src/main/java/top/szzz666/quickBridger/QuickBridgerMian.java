@@ -75,6 +75,7 @@ public class QuickBridgerMian extends PluginBase {
         this.getServer().getPluginManager().registerEvents(new PlayerJoinEvents(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerFoodLevelChangeEvents(), this);
         this.getServer().getPluginManager().registerEvents(new WeatherChangeEvents(), this);
+        this.getServer().getPluginManager().registerEvents(new PlayerInteractEvents(), this);
 
         VariableManage.addVariableV2("QbNumOfPlayers", RsNpcVariableV2.class);
         Api.registerVariables("QbNumOfPlayers", TipsVariable.class);

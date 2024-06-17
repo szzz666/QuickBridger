@@ -12,12 +12,14 @@ ReturnBlock: 22
 ElevatorBlock: 138
 #镐子
 Pickaxe: "278:0:1"
+#退出物品
+QuitItem: "324:0:1"
 #最低高度(低于将被拉回重生点)
-Lowy: 0.0
+Lowy: 60.0
 #世界名称
 LevelName: "bpractise"
 #玩家出生点坐标
-SpawnPoint: "4.5,24.0,10.5"
+SpawnPoint: "17.5,69.0,7.5"
 
 #命令名(例如：/qkbr join 就是加人搭路练习命令)
 CommandName: "qkbr"
