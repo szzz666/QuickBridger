@@ -8,7 +8,6 @@ import top.szzz666.quickBridger.entity.QBer;
 
 import static top.szzz666.quickBridger.QuickBridgerMian.*;
 import static top.szzz666.quickBridger.config.QbConfig.getQuitItem;
-import static top.szzz666.quickBridger.event.PlayerTeleportEvents.quitQb;
 
 
 public class PlayerInteractEvents implements Listener {
