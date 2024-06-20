@@ -1,6 +1,6 @@
 name: QuickBridger
 main: top.szzz666.quickBridger.QuickBridgerMian
-version: "1.0.3"
+version: "1.0.4"
 author: szzz666
 api: ["1.0.0"]
 description: QuickBridger plugin

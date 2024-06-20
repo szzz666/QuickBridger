@@ -11,6 +11,7 @@ import cn.nukkit.level.Position;
 import top.szzz666.quickBridger.entity.QBer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static top.szzz666.quickBridger.QuickBridgerMian.*;
 import static top.szzz666.quickBridger.config.QbConfig.*;
@@ -64,7 +65,7 @@ public class PlayerTeleportEvents implements Listener {
         PlayerInventory inventory = player.getInventory();
         QBer qBer = new QBer();
         qBer.setQbername(player.getName());
-        qBer.setQberInventory(setPlayerInventory(player, inventory));
+        qBer.setQberInventory(setPlayerInventory(inventory));
         qBer.setQberSpawnPoint(getSpawnPoint());
         AllQBer.put(player, qBer);
         resetInventory(player);
@@ -79,19 +80,19 @@ public class PlayerTeleportEvents implements Listener {
     }
 
     //保存玩家库存
-    public static ArrayList<Item> setPlayerInventory(Player player, PlayerInventory inventory){
-        ArrayList<Item> playerInventory = new ArrayList<>();
+    public static HashMap<Integer,Item> setPlayerInventory(PlayerInventory inventory){
+        HashMap<Integer,Item> playerInventory = new HashMap<>();
         for (int i = 0; i < inventory.getSize(); i++) {
             Item item = inventory.getItem(i);
-            playerInventory.add(item);
+            playerInventory.put(i, item);
         }
         return playerInventory;
     }
 
     //加载玩家库存
-    public static void getPlayerInventory(Player player, ArrayList<Item> inventoryArr){
+    public static void getPlayerInventory(Player player, HashMap<Integer,Item> inventoryArr){
         for (int i = 0; i < inventoryArr.size(); i++) {
-            player.getInventory().addItem(inventoryArr.get(i));
+            player.getInventory().setItem(i, inventoryArr.get(i));
         }
     }
 }

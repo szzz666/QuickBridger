@@ -6,6 +6,7 @@ import cn.nukkit.item.Item;
 import cn.nukkit.level.Position;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class QBer {
     private String qbername;
@@ -16,13 +17,13 @@ public class QBer {
     private boolean isElevator = true;
     private boolean isStop = true;
     private boolean isReturn = true;
-    private ArrayList<Item> qberInventory;
+    private HashMap<Integer,Item> qberInventory;
     private int quitCount;
 
     public QBer() {
     }
 
-    public QBer(String qbername, Position qberSpawnPoint, ArrayList<Block> qberBlock, boolean isSetSpawnPoint, boolean isSpeedup, boolean isElevator, boolean isStop, boolean isReturn, ArrayList<Item> qberInventory, int quitCount) {
+    public QBer(String qbername, Position qberSpawnPoint, ArrayList<Block> qberBlock, boolean isSetSpawnPoint, boolean isSpeedup, boolean isElevator, boolean isStop, boolean isReturn, HashMap<Integer, Item> qberInventory, int quitCount) {
         this.qbername = qbername;
         this.qberSpawnPoint = qberSpawnPoint;
         this.qberBlock = qberBlock;
@@ -34,7 +35,6 @@ public class QBer {
         this.qberInventory = qberInventory;
         this.quitCount = quitCount;
     }
-
 
     // 添加玩家放置方块数据
     public void addQberBlock(Block block) {
@@ -176,7 +176,7 @@ public class QBer {
      * 获取
      * @return qberInventory
      */
-    public ArrayList<Item> getQberInventory() {
+    public HashMap<Integer, Item> getQberInventory() {
         return qberInventory;
     }
 
@@ -184,7 +184,7 @@ public class QBer {
      * 设置
      * @param qberInventory
      */
-    public void setQberInventory(ArrayList<Item> qberInventory) {
+    public void setQberInventory(HashMap<Integer, Item> qberInventory) {
         this.qberInventory = qberInventory;
     }
 
