@@ -11,6 +11,7 @@ import cn.nukkit.math.Vector3;
 import top.szzz666.quickBridger.entity.QBer;
 
 import static top.szzz666.quickBridger.QuickBridgerMian.*;
+import static top.szzz666.quickBridger.config.LangConfig.elevatorUp;
 import static top.szzz666.quickBridger.config.QbConfig.ElevatorBlock;
 
 public class PlayerJumpEvents implements Listener {
@@ -32,7 +33,7 @@ public class PlayerJumpEvents implements Listener {
                 Position elevatorTpPosition = getElevatorTpPosition(player, ElevatorBlock);
                 if (elevatorTpPosition != null) {
                     player.teleport(elevatorTpPosition);
-                    player.sendTitle("§d电梯↑", "", 5, 10, 5);
+                    player.sendTitle(elevatorUp, "", 5, 10, 5);
                 }
             }
         }

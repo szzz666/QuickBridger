@@ -13,6 +13,7 @@ import top.szzz666.quickBridger.entity.QBer;
 import java.util.ArrayList;
 
 import static top.szzz666.quickBridger.QuickBridgerMian.*;
+import static top.szzz666.quickBridger.config.LangConfig.*;
 import static top.szzz666.quickBridger.config.QbConfig.*;
 import static top.szzz666.quickBridger.event.PlayerTeleportEvents.resetInventory;
 
@@ -38,7 +39,7 @@ public class PlayerPositionEvents implements Listener {
             //设置玩家新重生点
             if (footBlock.getId() == ResBlock && qber.isIsSetSpawnPoint()) {
                 qber.setQberSpawnPoint(new Position(playerPos.getX(), playerPos.getY(), playerPos.getZ(), getLevel()));
-                player.sendTitle("§b设置重生点", "", 5, 10, 5);
+                player.sendTitle(setTheSpawnPoint, "", 5, 10, 5);
                 qber.setIsSetSpawnPoint(false);
             } else if (footBlock.getId() != ResBlock) {
                 qber.setIsSetSpawnPoint(true);
@@ -46,7 +47,7 @@ public class PlayerPositionEvents implements Listener {
             //冲刺！！！！！
             if (footBlock.getId() == SpeedupBlock && qber.isIsSpeedup()) {
                 launchPlayer(player);
-                player.sendTitle("§b冲刺！", "", 5, 10, 5);
+                player.sendTitle(sprint, "", 5, 10, 5);
                 qber.setIsSpeedup(false);
             } else if (footBlock.getId() != SpeedupBlock) {
                 qber.setIsSpeedup(true);
@@ -55,7 +56,7 @@ public class PlayerPositionEvents implements Listener {
             if (footBlock.getId() == StopBlock && qber.isIsStop()) {
                 // 传送玩家到重生点
                 player.teleport(AllQBer.get(player).getQberSpawnPoint());
-                player.sendTitle("§a成功！", "", 5, 10, 5);
+                player.sendTitle(success, "", 5, 10, 5);
                 cleanQberBlock(qber.getQberBlock());
 //                resetInventory(player);
                 qber.setIsStop(false);

@@ -7,6 +7,7 @@ import cn.nukkit.event.player.PlayerInteractEvent;
 import top.szzz666.quickBridger.entity.QBer;
 
 import static top.szzz666.quickBridger.QuickBridgerMian.*;
+import static top.szzz666.quickBridger.config.LangConfig.PlayerInteract_sendActionBar;
 import static top.szzz666.quickBridger.config.QbConfig.getQuitItem;
 
 
@@ -22,7 +23,7 @@ public class PlayerInteractEvents implements Listener {
                    player.teleport(player.getSpawn());
                    qr.setQuitCount(0);
                }else {
-                   player.sendActionBar("§c§l请再次点击退出搭路练习!",5,20,5);
+                   player.sendActionBar(PlayerInteract_sendActionBar,5,20,5);
                    qr.setQuitCount(1);
                    nkServer.getScheduler().scheduleDelayedTask(plugin,
                            () -> qr.setQuitCount(0), 40);

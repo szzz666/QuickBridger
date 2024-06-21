@@ -9,7 +9,6 @@ import cn.nukkit.level.Position;
 import static top.szzz666.quickBridger.QuickBridgerMian.isQBer;
 import static top.szzz666.quickBridger.config.QbConfig.getSpawnPoint;
 import static top.szzz666.quickBridger.event.PlayerTeleportEvents.joinQb;
-import static top.szzz666.quickBridger.event.PlayerTeleportEvents.sandMsgToQber;
 
 public class PlayerJoinEvents implements Listener {
     @EventHandler
@@ -18,7 +17,6 @@ public class PlayerJoinEvents implements Listener {
         Position Position = player.getPosition();
         if (!isQBer(player) && Position.getLevel() == getSpawnPoint().getLevel()) {
             joinQb(player);
-            sandMsgToQber("§e玩家 " + player.getName() + " 加入了搭路练习");
         }
     }
 }

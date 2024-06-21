@@ -6,6 +6,7 @@ import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerCommandPreprocessEvent;
 
 import static top.szzz666.quickBridger.QuickBridgerMian.isQBer;
+import static top.szzz666.quickBridger.config.LangConfig.PlayerCommand_sendMessage;
 import static top.szzz666.quickBridger.config.QbConfig.CommandName;
 import static top.szzz666.quickBridger.config.QbConfig.CommandWhiteList;
 
@@ -18,7 +19,7 @@ public class CommandEvents implements Listener {
         //命令禁用
         if (isQBer(player) && !isWhitelistCommand(command) && !command.equals(CommandName) && !player.isOp()) {
             event.setCancelled(true);
-            player.sendMessage("§b你不能在搭路练习使用这个命令");
+            player.sendMessage(PlayerCommand_sendMessage);
         }
     }
 

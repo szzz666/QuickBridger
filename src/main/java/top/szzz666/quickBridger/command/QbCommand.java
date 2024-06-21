@@ -6,12 +6,13 @@ import cn.nukkit.command.CommandSender;
 import java.util.HashMap;
 
 
+import static top.szzz666.quickBridger.config.LangConfig.QbCommand_description;
 import static top.szzz666.quickBridger.config.QbConfig.*;
 
 
 public class QbCommand extends Command {
     public QbCommand() {
-        super(CommandName, "搭路练习");
+        super(CommandName, QbCommand_description);
         //设置命令参数在客户端显示，可以tab补全
 //        HashMap<String,String> subCommand = new HashMap<String,String> ();
 //        subCommand.put("join","加入搭路练习");

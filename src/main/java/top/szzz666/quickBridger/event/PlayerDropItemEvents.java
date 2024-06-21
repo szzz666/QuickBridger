@@ -6,6 +6,7 @@ import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerDropItemEvent;
 
 import static top.szzz666.quickBridger.QuickBridgerMian.isQBer;
+import static top.szzz666.quickBridger.config.LangConfig.PlayerDropItem_sendMessage;
 
 public class PlayerDropItemEvents implements Listener {
     @EventHandler
@@ -13,7 +14,7 @@ public class PlayerDropItemEvents implements Listener {
       Player player = event.getPlayer();
       if (isQBer(player)){
           event.setCancelled(true);
-          player.sendMessage("§c你不能丢弃物品");
+          player.sendMessage(PlayerDropItem_sendMessage);
       }
 
     }

@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import static top.szzz666.quickBridger.QuickBridgerMian.*;
+import static top.szzz666.quickBridger.config.LangConfig.PlayerJoin_sandMsgToQber;
+import static top.szzz666.quickBridger.config.LangConfig.PlayerQuit_sandMsgToQber;
 import static top.szzz666.quickBridger.config.QbConfig.*;
 import static top.szzz666.quickBridger.event.PlayerPositionEvents.cleanQberBlock;
 
@@ -56,7 +58,7 @@ public class PlayerTeleportEvents implements Listener {
         cleanQberBlock(qBer.getQberBlock());
         player.getInventory().clearAll();
         getPlayerInventory(player, qBer.getQberInventory());
-        sandMsgToQber("§e玩家 " + player.getName() + " 退出了搭路练习");
+        sandMsgToQber(PlayerQuit_sandMsgToQber.replaceAll("%player%", player.getName()));
         AllQBer.remove(player);
     }
 
@@ -70,7 +72,7 @@ public class PlayerTeleportEvents implements Listener {
         AllQBer.put(player, qBer);
         resetInventory(player);
         player.setGamemode(0);
-        sandMsgToQber("§e玩家 " + player.getName() + " 加入了搭路练习");
+        sandMsgToQber(PlayerJoin_sandMsgToQber.replaceAll("%player%", player.getName()));
     }
 
     public static void sandMsgToQber(String msg){

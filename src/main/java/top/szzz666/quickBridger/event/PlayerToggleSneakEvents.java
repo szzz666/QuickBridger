@@ -11,6 +11,7 @@ import top.szzz666.quickBridger.entity.QBer;
 
 import static top.szzz666.quickBridger.QuickBridgerMian.AllQBer;
 import static top.szzz666.quickBridger.QuickBridgerMian.isQBer;
+import static top.szzz666.quickBridger.config.LangConfig.elevatorDown;
 import static top.szzz666.quickBridger.config.QbConfig.ElevatorBlock;
 
 public class PlayerToggleSneakEvents implements Listener {
@@ -30,7 +31,7 @@ public class PlayerToggleSneakEvents implements Listener {
                 Position elevatorTpPosition = getElevatorTpPosition(player, ElevatorBlock);
                 if (elevatorTpPosition != null) {
                     player.teleport(elevatorTpPosition);
-                    player.sendTitle("§d电梯↓", "", 5, 10, 5);
+                    player.sendTitle(elevatorDown, "", 5, 10, 5);
                 }
             }
         }

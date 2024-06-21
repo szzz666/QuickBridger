@@ -1,8 +1,6 @@
 package top.szzz666.quickBridger.variable;
 
 import cn.nukkit.Player;
-import com.smallaswater.npc.data.RsNpcConfig;
-import tip.utils.Api;
 import tip.utils.variables.BaseVariable;
 
 import static top.szzz666.quickBridger.QuickBridgerMian.AllQBer;

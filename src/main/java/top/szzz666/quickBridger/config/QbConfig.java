@@ -10,8 +10,10 @@ import cn.nukkit.utils.Config;
 import java.util.ArrayList;
 
 import static top.szzz666.quickBridger.QuickBridgerMian.ConfigPath;
+import static top.szzz666.quickBridger.QuickBridgerMian.plugin;
 
 public class QbConfig {
+    public static String Language;
     public static String BridgingBlock;
     public static int StopBlock;
     public static int ResBlock;
@@ -29,7 +31,9 @@ public class QbConfig {
     public static ArrayList<String> CommandWhiteList;
 
     public static boolean loadConfig() {
+        plugin.saveResource("config.yml");
         Config config = new Config(ConfigPath + "/config.yml", Config.YAML);
+        Language = config.getString("Language");
         BridgingBlock = config.getString("BridgingBlock");
         StopBlock = config.getInt("StopBlock");
         ResBlock = config.getInt("ResBlock");

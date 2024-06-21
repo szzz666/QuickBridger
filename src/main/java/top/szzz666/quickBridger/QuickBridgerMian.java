@@ -20,6 +20,7 @@ import top.szzz666.quickBridger.variable.TipsVariable;
 import java.io.File;
 import java.util.HashMap;
 
+import static top.szzz666.quickBridger.config.LangConfig.loadLangConfig;
 import static top.szzz666.quickBridger.config.QbConfig.LevelName;
 import static top.szzz666.quickBridger.config.QbConfig.getSpawnPoint;
 import static top.szzz666.quickBridger.tools.Utils.*;
@@ -40,20 +41,18 @@ public class QuickBridgerMian extends PluginBase {
         this.getLogger().info("§b| (_) | || | / _| / / _ \\ '_| / _` / _` / -_) '_|");
         this.getLogger().info("§b \\__\\_\\\\_,_|_\\__|_\\_\\___/_| |_\\__,_\\__, \\___|_|  ");
         this.getLogger().info("§b                                   |___/ ");
-        QbConfig.loadConfig();
         this.getLogger().info("§bQuickBridger插件读取...");
         nkServer = getServer();
         plugin = this;
         consoleObjects = getServer().getConsoleSender();
         ConfigPath = getDataFolder().getPath();
-        copyFiles(new File(ConfigPath + "/world/" + LevelName), new File("worlds"));
+        if (QbConfig.loadConfig() && loadLangConfig()){
+            this.getLogger().info("§bQuickBridger插件配置文件读取成功");
+        }
         if(!isFolder(ConfigPath + "/world")){
             createFolder(ConfigPath + "/world");
         }
-        this.saveResource("config.yml");
-        if (QbConfig.loadConfig()){
-            this.getLogger().info("§bQuickBridger插件配置文件读取成功");
-        }
+        copyFiles(new File(ConfigPath + "/world"), new File("worlds"));
     }
 
     @Override
@@ -83,7 +82,12 @@ public class QuickBridgerMian extends PluginBase {
         setTimeTask = getServer().getScheduler().scheduleRepeatingTask(this, new Task() {
             @Override
             public void onRun(int currentTick) {
+                try {
                 getSpawnPoint().getLevel().setTime(6000);
+            }catch (Exception e){
+                    plugin.getLogger().error("§4"+LevelName+" 地图不存在");
+                }
+
             }
         }, 20*60);
 
@@ -114,11 +118,4 @@ public class QuickBridgerMian extends PluginBase {
             plugin.getLogger().info(TextFormat.colorize('&',msg));
         }
     }
-
-    //添加物品
-//    public static void addItemToPlayer(Player player,Item item) {
-//        if (player.getInventory().canAddItem(item)) {
-//            player.getInventory().addItem(item);
-//        }
-//    }
 }
