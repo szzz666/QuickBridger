@@ -18,11 +18,13 @@ import top.szzz666.quickBridger.variable.RsNpcVariableV2;
 import top.szzz666.quickBridger.variable.TipsVariable;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
 import static top.szzz666.quickBridger.config.LangConfig.loadLangConfig;
 import static top.szzz666.quickBridger.config.QbConfig.LevelName;
 import static top.szzz666.quickBridger.config.QbConfig.getSpawnPoint;
+import static top.szzz666.quickBridger.tools.FileUtil.loadRecourseFromJarByFolder;
 import static top.szzz666.quickBridger.tools.Utils.*;
 
 
@@ -48,6 +50,13 @@ public class QuickBridgerMian extends PluginBase {
         ConfigPath = getDataFolder().getPath();
         if (QbConfig.loadConfig() && loadLangConfig()){
             this.getLogger().info("§bQuickBridger插件配置文件读取成功");
+        }
+        if (!isFolder(ConfigPath + "/world")) {
+            try {
+                loadRecourseFromJarByFolder("/world", ConfigPath, QuickBridgerMian.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         if(!isFolder(ConfigPath + "/world")){
             createFolder(ConfigPath + "/world");

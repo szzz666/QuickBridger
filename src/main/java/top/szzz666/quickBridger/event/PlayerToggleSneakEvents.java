@@ -7,10 +7,11 @@ import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerToggleSneakEvent;
 import cn.nukkit.level.Position;
 import cn.nukkit.math.Vector3;
+import cn.nukkit.scheduler.AsyncTask;
 import top.szzz666.quickBridger.entity.QBer;
 
-import static top.szzz666.quickBridger.QuickBridgerMian.AllQBer;
-import static top.szzz666.quickBridger.QuickBridgerMian.isQBer;
+import static top.szzz666.quickBridger.QuickBridgerMian.*;
+import static top.szzz666.quickBridger.QuickBridgerMian.plugin;
 import static top.szzz666.quickBridger.config.LangConfig.elevatorDown;
 import static top.szzz666.quickBridger.config.QbConfig.ElevatorBlock;
 
@@ -25,15 +26,20 @@ public class PlayerToggleSneakEvents implements Listener {
             Vector3 playerPos = player.getPosition();
             Vector3 feetPos = playerPos.add(0, -1, 0); // 获取玩家脚下方块的位置
             Block footBlock = player.getLevel().getBlock(feetPos);
-
-            //电梯↓
-            if (player.isSneaking() && footBlock.getId() == ElevatorBlock) {
-                Position elevatorTpPosition = getElevatorTpPosition(player, ElevatorBlock);
-                if (elevatorTpPosition != null) {
-                    player.teleport(elevatorTpPosition);
-                    player.sendTitle(elevatorDown, "", 5, 10, 5);
+            nkServer.getScheduler().scheduleAsyncTask(plugin, new AsyncTask() {
+                @Override
+                public void onRun() {
+                    //电梯↓
+                    if (player.isSneaking() && footBlock.getId() == ElevatorBlock) {
+                        Position elevatorTpPosition = getElevatorTpPosition(player, ElevatorBlock);
+                        if (elevatorTpPosition != null) {
+                            player.teleport(elevatorTpPosition);
+                            player.sendTitle(elevatorDown, "", 5, 10, 5);
+                        }
+                    }
                 }
-            }
+            });
+
         }
     }
 

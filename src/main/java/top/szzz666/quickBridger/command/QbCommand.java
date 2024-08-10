@@ -3,7 +3,6 @@ package top.szzz666.quickBridger.command;
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
-import java.util.HashMap;
 
 
 import static top.szzz666.quickBridger.config.LangConfig.QbCommand_description;

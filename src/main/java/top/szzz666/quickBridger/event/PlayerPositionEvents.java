@@ -8,6 +8,7 @@ import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerMoveEvent;
 import cn.nukkit.level.Position;
 import cn.nukkit.math.Vector3;
+import cn.nukkit.scheduler.AsyncTask;
 import top.szzz666.quickBridger.entity.QBer;
 
 import java.util.ArrayList;
@@ -92,20 +93,21 @@ public class PlayerPositionEvents implements Listener {
 
     //清理搭路练习者搭的方块
     public static void cleanQberBlock(ArrayList<Block> QberBlock) {
-        if (QberBlock != null) {
-            for (Block block : QberBlock) {
-                double bx = block.getX();
-                double by = block.getY();
-                double bz = block.getZ();
-                // 获取要修改的坐标
-                Vector3 position = new Vector3(bx, by, bz); // 替换 x、y、z 为具体的坐标
-                //将这个坐标位置的方块填充为空气方块
-                getLevel().setBlock(position, Block.get(BlockID.AIR));
+        nkServer.getScheduler().scheduleAsyncTask(plugin, new AsyncTask() {
+            @Override
+            public void onRun() {
+                if (QberBlock != null) {
+                    for (Block block : QberBlock) {
+                        double bx = block.getX();
+                        double by = block.getY();
+                        double bz = block.getZ();
+                        // 获取要修改的坐标
+                        Vector3 position = new Vector3(bx, by, bz); // 替换 x、y、z 为具体的坐标
+                        //将这个坐标位置的方块填充为空气方块
+                        getLevel().setBlock(position, Block.get(BlockID.AIR));
+                    }
+                }
             }
-        }
+        });
     }
-
-
-
-
 }

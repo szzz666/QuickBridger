@@ -18,7 +18,7 @@ public class CommandEvents implements Listener {
         String command = message.replaceAll("/", "").split(" ")[0];
         //命令禁用
         if (isQBer(player) && !isWhitelistCommand(command) && !command.equals(CommandName) && !player.isOp()) {
-            event.setCancelled(true);
+            event.setCancelled();
             player.sendMessage(PlayerCommand_sendMessage);
         }
     }

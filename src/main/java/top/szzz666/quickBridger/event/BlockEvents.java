@@ -30,7 +30,7 @@ public class BlockEvents implements Listener {
             Item itemInfo = getBridgingBlockItem();
             if (item.equals(itemInfo) && item.getCount() <= 1) {
                 nkServer.getScheduler().scheduleDelayedTask(plugin,
-                        () -> player.getInventory().addItem(itemInfo), 1);
+                        () -> player.getInventory().addItem(itemInfo), 1, true);
             }
         }
     }
@@ -48,7 +48,7 @@ public class BlockEvents implements Listener {
                 //设置耐久为最大值
                 ItemInHand.setDamage(0);
                 nkServer.getScheduler().scheduleDelayedTask(plugin,
-                        () -> player.getInventory().setItemInHand(ItemInHand), 1);
+                        () -> player.getInventory().setItemInHand(ItemInHand), 1,true);
             }
         }
         if (player.getLevel().getName().equals(LevelName) && placedBlock.getId() != bridgingBlockId) {//玩家在世界名字为"world"

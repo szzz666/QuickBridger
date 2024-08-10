@@ -8,6 +8,7 @@ import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerJumpEvent;
 import cn.nukkit.level.Position;
 import cn.nukkit.math.Vector3;
+import cn.nukkit.scheduler.AsyncTask;
 import top.szzz666.quickBridger.entity.QBer;
 
 import static top.szzz666.quickBridger.QuickBridgerMian.*;
@@ -27,15 +28,20 @@ public class PlayerJumpEvents implements Listener {
             Vector3 feetPos0 = playerPos.add(0, -2, 0);
             Block footBlock = player.getLevel().getBlock(feetPos);
             Block footBlock0 = player.getLevel().getBlock(feetPos0);
-
-            //电梯
-            if (footBlock.getId() == ElevatorBlock || footBlock0.getId() == ElevatorBlock) {
-                Position elevatorTpPosition = getElevatorTpPosition(player, ElevatorBlock);
-                if (elevatorTpPosition != null) {
-                    player.teleport(elevatorTpPosition);
-                    player.sendTitle(elevatorUp, "", 5, 10, 5);
+            nkServer.getScheduler().scheduleAsyncTask(plugin, new AsyncTask() {
+                @Override
+                public void onRun() {
+                    //电梯
+                    if (footBlock.getId() == ElevatorBlock || footBlock0.getId() == ElevatorBlock) {
+                        Position elevatorTpPosition = getElevatorTpPosition(player, ElevatorBlock);
+                        if (elevatorTpPosition != null) {
+                            player.teleport(elevatorTpPosition);
+                            player.sendTitle(elevatorUp, "", 5, 10, 5);
+                        }
+                    }
                 }
-            }
+            });
+
         }
     }
 
